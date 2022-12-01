@@ -1,13 +1,16 @@
+version: "3"
 services:
-  db:
-    image: motorway-test-backend
-    container_name: motorway-test-backend
-    build:
-      context: .
-      target: motorway-test-backend
+  motorway-takehome-api:
+    build: .
     environment:
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=motorway
+      - PORT=3000
+  db:
+    image: postgres:14
     ports:
       - 5432:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      
+volumes:
+  db-data:
+    driver: local
