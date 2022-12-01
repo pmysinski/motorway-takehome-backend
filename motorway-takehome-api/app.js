@@ -1,10 +1,10 @@
 const express = require('express');
 
+const db = require("./models");
+
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send('hey');
-})
+require("./routes/vehicle.routes")(app);
 
 const port = process.env.PORT || 3000;
 
