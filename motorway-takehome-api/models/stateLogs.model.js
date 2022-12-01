@@ -7,7 +7,13 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.DataTypes.DATE
     }
   }, {
-    timestamps: false
+    timestamps: false,
+    indexes:[
+      {
+        unique: false,
+        fields:['timestamp']
+      }
+     ]
   });
 
   return StateLog;
