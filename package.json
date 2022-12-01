@@ -1,0 +1,26 @@
+{
+  "name": "motorway-takehome-api",
+  "version": "1.0.0",
+  "description": "Motorway Senior Backend Engineer Tech Challenge",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint ./motorway-takehome-api",
+    "format": "npm run lint -- --fix",
+    "start": "node ./motorway-takehome-api/app.js",
+    "dev": "nodemon -L ./motorway-takehome-api/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pawel Mysinski <pawel.mysinski@gmail.com>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "express": "^4.18.2",
+    "http-errors": "^2.0.0",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.26.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.28.0",
+    "nodemon": "^2.0.20"
+  }
+}
