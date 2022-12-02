@@ -1,6 +1,6 @@
 const { validationResult } = require('express-validator');
 
-const expressValidationError = (req, res, next) => {
+const expressValidationError = (req, _res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     const err = new Error(errors.array().map(el => `${el['param']} - has Error: ${el['msg']}`).toString());
@@ -11,6 +11,8 @@ const expressValidationError = (req, res, next) => {
   }
 };
 
+// there has to be unused next otherwise express logs errors by itself
+// eslint-disable-next-line no-unused-vars
 const globalErrorHandler = (err, req, res, next) => {
   const status = err.status || 500;
   res.status(status).json({

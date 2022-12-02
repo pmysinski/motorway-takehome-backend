@@ -52,15 +52,22 @@ exports.findOne = [
         ],
       });
 
-      if (!vehicle || !vehicle.stateLog[0]) {
+      if (!vehicle) {
         return res.status(404).send({
           message: 'Vehicle not found'
         });
+      } 
+      if( !vehicle.stateLog[0]){
+        return res.status(404).send({
+          message: 'No state found on that point in time'
+        });
       }
+
       const data = Vehicle.build({
         ...vehicle.toJSON(),
         state: vehicle.stateLog[0].state
       }).toJSON();
+
       await setCache(cacheKey(id, stateAt), JSON.stringify(data))
 
       res.json(data);

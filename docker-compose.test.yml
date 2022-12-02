@@ -1,25 +1,19 @@
 version: "3"
-
-networks:
-  default:
-    # Use a custom driver
-    driver: custom-driver-1
-
 services:
   motorway-takehome-api:
+    container_name: tester
     build: 
-      target: dev
+      target: test
       context: .
       args: 
         NODE_ENV: development
     volumes: 
-      - ./:/app:ro
+      - ./:/app
       - /app/node_modules
     environment:
       - NODE_ENV=development
     ports:
       - "3000:3000"
-    command: npm run dev
 
 
   db:

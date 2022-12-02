@@ -2,15 +2,17 @@ version: "3"
 services:
   motorway-takehome-api:
     build: 
-      context: .
+      target: prod
       args: 
         NODE_ENV: production
     environment:
       - NODE_ENV=production
     deploy:
       replicas: 2
+    restart: always
 
   nginx:
+    image: motorway/motorway-takehome-nginx
     build: 
       context: ./nginx
     ports:
@@ -19,3 +21,10 @@ services:
       - motorway-takehome-api
     environment:
       - NODE_ENV=production
+    restart: always
+
+  db:
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=motorway

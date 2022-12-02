@@ -1,0 +1,9 @@
+{
+  "all": true,
+  "include": [
+    "motorway-takehome-api/**"
+  ],
+  "exclude": [
+    "**/test/**"
+  ]
+}

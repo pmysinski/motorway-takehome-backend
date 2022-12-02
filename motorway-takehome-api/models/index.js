@@ -5,7 +5,13 @@ const config = require("../config/config.js");
 const sequelize = new Sequelize(config.DB_NAME, config.DB_USER, config.DB_PASSWORD, {
   host: config.DB_HOST,
   dialect: 'postgres',
-
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000,
+  },
+  logging: false
 });
 
 
@@ -22,19 +28,6 @@ db.StateLog.belongsTo(db.Vehicle, {
   foreignKey: "vehicleId",
   as: "vehicle",
 });
-
-
-db.sequelize.authenticate().then(() => {
-  console.log('Connection has been established successfully.');
-  db.sequelize.sync({ alter: true }).then(() => {
-
-  }).catch((error) => {
-    console.error('Unable to sync the database: ', error);
-  });
-}).catch((error) => {
-  console.error('Unable to connect to the database: ', error);
-});
-
 
 
 module.exports = db;
