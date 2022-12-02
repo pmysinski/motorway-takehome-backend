@@ -1,10 +1,5 @@
 version: "3"
 
-networks:
-  default:
-    # Use a custom driver
-    driver: custom-driver-1
-
 services:
   motorway-takehome-api:
     build: 
@@ -17,6 +12,7 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
+      - CACHE_TTL=0
     ports:
       - "3000:3000"
     command: npm run dev

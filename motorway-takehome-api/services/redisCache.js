@@ -4,6 +4,7 @@ const config = require('../config/config')
 
 const redisBuilder = () => {
   if(config.CACHE_TTL === 0){
+    console.log('Caching disabled.')
     return {
       getCache: () => null,
       setCache: () => null

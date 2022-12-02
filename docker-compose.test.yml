@@ -1,4 +1,10 @@
 version: "3"
+
+networks:
+  default:
+    driver: custom-driver-1
+
+
 services:
   motorway-takehome-api:
     container_name: tester
@@ -12,6 +18,7 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
+      - CACHE_TTL=0
     ports:
       - "3000:3000"
 

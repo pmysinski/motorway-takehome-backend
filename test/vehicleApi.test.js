@@ -7,8 +7,8 @@ before(async () => {
   app = await initPromise;
 });
 
-describe('Vehicle API /api/vehicule/', () => {
-  describe('/api/vehicule/:id ', () => {
+describe('Vehicle API /api/vehicle/', () => {
+  describe('/api/vehicle/:id ', () => {
     const stateToDate = [{
       vehicleId: 1,
       date: '2022-09-10T12:00:00',
@@ -54,7 +54,7 @@ describe('Vehicle API /api/vehicule/', () => {
       expect(response.statusCode).to.be.equal(404);
     });
 
-    it('should get validation error if vehicle id is not integeer', async () => {
+    it('should get validation error if vehicle id is not integer', async () => {
       const response = await request(app).get(`/api/vehicles/fff`);
       expect(response.statusCode).to.be.equal(400);
     });
@@ -63,6 +63,5 @@ describe('Vehicle API /api/vehicule/', () => {
       const response = await request(app).get(`/api/vehicles/3`);
       expect(response.statusCode).to.be.equal(400);
     });
-
   });
 });
