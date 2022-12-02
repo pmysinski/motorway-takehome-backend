@@ -17,3 +17,9 @@ docker compose -f docker-compose.yml -f docker-compose.test.yml up --attach moto
 
 ## In case of changing dependncies use:
 docker compose -f docker-compose.yml -f docker-compose.test.yml down -v
+
+# production
+
+Use production .env instead of example file in this repo.
+
+docker compose --env-file ./.env -f docker-compose.yml -f docker-compose.prod.yml up  --build
